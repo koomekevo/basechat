@@ -3,12 +3,15 @@ import React, { useState } from "react";
 
 import { BGImage, Logo } from "../assets";
 import UserTextInput from "../components/UserTextInput";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const screenWidth = Math.round(Dimensions.get("window").width);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigation = useNavigation();
 
   return (
     <View className="flex-1 items-center justify-start">
@@ -44,7 +47,7 @@ const LoginScreen = () => {
 
           {/* Login Button */}
           <TouchableOpacity className="w-full px-4 py-2 rounded-xl bg-primary my-3 flex items-center justify-center">
-            <Text className="py-2 text-white text-xl font-semibold">
+            <Text className="py-1 text-white text-xl font-semibold">
               {" "}
               Sign In
             </Text>
@@ -53,7 +56,9 @@ const LoginScreen = () => {
             <Text className="text-base text-primaryText">
               Don't have an account?
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("SignUpScreen")}
+            >
               <Text className="text-base font-semibold text-primaryBold">
                 Create Here
               </Text>
