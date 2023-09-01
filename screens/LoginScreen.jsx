@@ -1,10 +1,13 @@
 import { View, Text, Image, Dimensions } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 import { BGImage, Logo } from "../assets";
+import UserTextInput from "../components/UserTextInput";
 
 const LoginScreen = () => {
   const screenWidth = Math.round(Dimensions.get("window").width);
+
+  const [email, setEmail] = useState("");
   return (
     <View className="flex-1 items-center justify-start">
       <Image
@@ -17,6 +20,23 @@ const LoginScreen = () => {
       {/* Main View */}
       <View className="w-full h-full bg-white rounded-tl-[90px] -mt-44 flex items-center justify-start py-6 space-y-6">
         <Image source={Logo} className="w-16 h-16" resizeMode="contain" />
+        <Text className="py-2 text-primaryText text-xl font-semibold">
+          Welcome Back!
+        </Text>
+        <View className="w-full flex items-center justify-center">
+          {/* Alert */}
+
+          {/* Email */}
+          <UserTextInput
+            placeholder="Email"
+            isPass={false}
+            setStateValue={setEmail}
+          />
+
+          {/* Password */}
+
+          {/* Login Button */}
+        </View>
       </View>
     </View>
   );
