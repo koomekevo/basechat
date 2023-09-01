@@ -18,7 +18,7 @@ const LoginScreen = () => {
       <Image
         source={BGImage}
         resizeMode="cover"
-        className="h-96"
+        className="h-72"
         style={{ width: screenWidth }}
       />
 
