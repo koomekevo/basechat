@@ -1,4 +1,4 @@
-import { View, Text, Image, Dimensions } from "react-native";
+import { View, Text, Image, Dimensions, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 
 import { BGImage, Logo } from "../assets";
@@ -43,6 +43,22 @@ const LoginScreen = () => {
           />
 
           {/* Login Button */}
+          <TouchableOpacity className="w-full px-4 py-2 rounded-xl bg-primary my-3 flex items-center justify-center">
+            <Text className="py-2 text-white text-xl font-semibold">
+              {" "}
+              Sign In
+            </Text>
+          </TouchableOpacity>
+          <View className="w-full py-12 flex-row item-center justify-center space-x-2">
+            <Text className="text-base text-primaryText">
+              Don't have an account?
+            </Text>
+            <TouchableOpacity>
+              <Text className="text-base font-semibold text-primaryBold">
+                Create Here
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
