@@ -8,6 +8,8 @@ const LoginScreen = () => {
   const screenWidth = Math.round(Dimensions.get("window").width);
 
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <View className="flex-1 items-center justify-start">
       <Image
@@ -34,6 +36,11 @@ const LoginScreen = () => {
           />
 
           {/* Password */}
+          <UserTextInput
+            placeholder="Password"
+            isPass={true}
+            setStateValue={setEmail}
+          />
 
           {/* Login Button */}
         </View>
