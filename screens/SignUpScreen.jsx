@@ -23,8 +23,15 @@ const SignUpScreen = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState(avatars[0]?.image.asset.url);
+  const [isAvatarMenu, setIsAvatarMenu] = useState(false);
 
   const navigation = useNavigation();
+
+  const handleAvatar = (item) => {
+    setAvatar(item?.image.asset.url);
+    setIsAvatarMenu(false);
+  };
+
   return (
     <View className="flex-1 items-center justify-start">
       <Image
@@ -34,35 +41,38 @@ const SignUpScreen = () => {
         style={{ width: screenWidth }}
       />
 
-      <>
-        {/* List of avatars sections */}
-        <View
-          className="absolute inset-0 z-10"
-          style={{ width: screenWidth, height: screenHeight }}
-        >
-          <ScrollView>
-            <BlurView
-              className="w-full h-full px-4 py-16 flex-row flex-wrap items-center justify-evenly"
-              tint="light"
-              intensity={40}
-              style={{ width: screenWidth, height: screenHeight }}
-            >
-              {avatars?.map((item) => (
-                <TouchableOpacity
-                  key={item._id}
-                  className="w-20 m-3 h-20 p-1 rounded-full border-2 border-primary relative"
-                >
-                  <Image
-                    source={{ uri: item?.image.asset.url }}
-                    className="w-full h-full"
-                    resizeMode="contain"
-                  />
-                </TouchableOpacity>
-              ))}
-            </BlurView>
-          </ScrollView>
-        </View>
-      </>
+      {isAvatarMenu && (
+        <>
+          {/* List of avatars sections */}
+          <View
+            className="absolute inset-0 z-10"
+            style={{ width: screenWidth, height: screenHeight }}
+          >
+            <ScrollView>
+              <BlurView
+                className="w-full h-full px-4 py-16 flex-row flex-wrap items-center justify-evenly"
+                tint="light"
+                intensity={40}
+                style={{ width: screenWidth, height: screenHeight }}
+              >
+                {avatars?.map((item) => (
+                  <TouchableOpacity
+                    onPress={() => handleAvatar(item)}
+                    key={item._id}
+                    className="w-20 m-3 h-20 p-1 rounded-full border-2 border-primary relative"
+                  >
+                    <Image
+                      source={{ uri: item?.image.asset.url }}
+                      className="w-full h-full"
+                      resizeMode="contain"
+                    />
+                  </TouchableOpacity>
+                ))}
+              </BlurView>
+            </ScrollView>
+          </View>
+        </>
+      )}
 
       {/* Main View */}
       <View className="w-full h-full bg-white rounded-tl-[90px] -mt-44 flex items-center justify-start py-6 space-y-6">
@@ -73,7 +83,10 @@ const SignUpScreen = () => {
 
         {/* Avatar Section*/}
         <View className="w-full flex items-center justify-center relative -my-4">
-          <TouchableOpacity className="w-20 h-20 p-1 rounded-full border-2 border-primary relative">
+          <TouchableOpacity
+            onPress={() => setIsAvatarMenu(true)}
+            className="w-20 h-20 p-1 rounded-full border-2 border-primary relative"
+          >
             <Image
               source={{ uri: avatar }}
               className="w-full h-full"
