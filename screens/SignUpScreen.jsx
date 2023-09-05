@@ -5,6 +5,7 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
+  useWindowDimensions,
 } from "react-native";
 import React, { useState } from "react";
 
@@ -16,8 +17,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 
 const SignUpScreen = () => {
-  const screenWidth = Math.round(Dimensions.get("window").width);
-  const screenHeight = Math.round(Dimensions.get("window").height);
+  const { screenWidth, screenHeight } = useWindowDimensions();
 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
