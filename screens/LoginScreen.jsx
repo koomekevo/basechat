@@ -1,4 +1,4 @@
-import { View, Text, Image, Dimensions, TouchableOpacity } from "react-native";
+import { View, Text, Image, useWindowDimensions, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 
 import { BGImage, Logo } from "../assets";
@@ -6,7 +6,7 @@ import UserTextInput from "../components/UserTextInput";
 import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
-  const screenWidth = Math.round(Dimensions.get("window").width);
+  const { screenWidth } = useWindowDimensions();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
