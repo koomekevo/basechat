@@ -51,8 +51,8 @@ const SignUpScreen = () => {
             <ScrollView>
               <BlurView
                 className="w-full h-full px-4 py-16 flex-row flex-wrap items-center justify-evenly"
-                tint="light"
-                intensity={40}
+                tint="dark"
+                intensity={100}
                 style={{ width: screenWidth, height: screenHeight }}
               >
                 {avatars?.map((item) => (
