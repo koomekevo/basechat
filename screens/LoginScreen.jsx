@@ -44,7 +44,7 @@ const LoginScreen = () => {
             placeholder="Email"
             isPass={false}
             setStateValue={setEmail}
-            setEmailValidationStatus={setGetEmailValidationStatus}
+            setGetEmailValidationStatus={setGetEmailValidationStatus}
           />
 
           {/* Password */}

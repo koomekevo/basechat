@@ -113,7 +113,7 @@ const SignUpScreen = () => {
             placeholder="Email"
             isPass={false}
             setStateValue={setEmail}
-            setEmailValidationStatus={setGetEmailValidationStatus}
+            setGetEmailValidationStatus={setGetEmailValidationStatus}
           />
 
           {/* Password */}
