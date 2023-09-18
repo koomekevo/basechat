@@ -1,4 +1,10 @@
-import { View, Text, Image, useWindowDimensions, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  useWindowDimensions,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
 
 import { BGImage, Logo } from "../assets";
@@ -10,6 +16,8 @@ const LoginScreen = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [getEmailValidationStatus, setGetEmailValidationStatus] =
+    useState(false);
 
   const navigation = useNavigation();
 
@@ -36,6 +44,7 @@ const LoginScreen = () => {
             placeholder="Email"
             isPass={false}
             setStateValue={setEmail}
+            setEmailValidationStatus={setGetEmailValidationStatus}
           />
 
           {/* Password */}
