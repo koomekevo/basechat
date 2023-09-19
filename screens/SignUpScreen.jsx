@@ -14,7 +14,9 @@ import UserTextInput from "../components/UserTextInput";
 import { useNavigation } from "@react-navigation/native";
 import { avatars } from "../utils/supports";
 import { MaterialIcons } from "@expo/vector-icons";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { BlurView } from "expo-blur";
+import { firebaseAuth } from "../config/firebase.config";
 
 const SignUpScreen = () => {
   const { screenWidth, screenHeight } = useWindowDimensions();
@@ -32,6 +34,18 @@ const SignUpScreen = () => {
   const handleAvatar = (item) => {
     setAvatar(item?.image.asset.url);
     setIsAvatarMenu(false);
+  };
+
+  const handleSignUp = async () => {
+    if (getEmailValidationStatus && email !== "") {
+      await createUserWithEmailAndPassword(firebaseAuth, email, password).then(
+        (userCred) => {
+          (userCred) => {
+            console.log(userCred.user);
+          };
+        }
+      );
+    }
   };
 
   return (
@@ -120,11 +134,14 @@ const SignUpScreen = () => {
           <UserTextInput
             placeholder="Password"
             isPass={true}
-            setStateValue={setEmail}
+            setStateValue={setPassword}
           />
 
           {/* SignUp Button */}
-          <TouchableOpacity className="w-full px-4 py-1 rounded-xl bg-primary my-3 flex items-center justify-center">
+          <TouchableOpacity
+            onPress={handleSignUp}
+            className="w-full px-4 py-1 rounded-xl bg-primary my-3 flex items-center justify-center"
+          >
             <Text className="py-2 text-white text-xl font-semibold">
               {" "}
               Sign Up
